@@ -1,4 +1,4 @@
 FROM        sdurrheimer/alpine-golang-make-onbuild
-MAINTAINER  Yegor Andreenko
+MAINTAINER  Roman Tkalenko
 
 EXPOSE     9116
