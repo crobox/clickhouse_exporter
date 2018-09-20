@@ -12,6 +12,8 @@ FROM frolvlad/alpine-glibc
 
 COPY --from=BUILD /go/bin/clickhouse_exporter /usr/local/bin/clickhouse_exporter
 
-CMD ["/usr/local/bin/clickhouse_exporter", "-scrape_uri=http://localhost:8123"]
+ENTRYPOINT ["/usr/local/bin/clickhouse_exporter"]
+
+CMD ["-scrape_uri=http://localhost:8123"]
 
 EXPOSE     9116
