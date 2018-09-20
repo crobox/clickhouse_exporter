@@ -1,13 +1,17 @@
-FROM golang:1.11
+FROM golang:1.11 AS BUILD
 
 MAINTAINER  Roman Tkalenko
 
 ADD . /go/src/github.com/tkroman/clickhouse_exporter
 
-RUN cd /go/src/github.com/tkroman/clickhouse_exporter && make init && make
+WORKDIR /go/src/github.com/tkroman/clickhouse_exporter
 
-ENTRYPOINT ["/go/bin/clickhouse_exporter"]
+RUN make init && make
 
-CMD ["-scrape_uri=http://localhost:8123"]
+FROM frolvlad/alpine-glibc
+
+COPY --from=BUILD /go/bin/clickhouse_exporter /usr/local/bin/clickhouse_exporter
+
+CMD ["/usr/local/bin/clickhouse_exporter", "-scrape_uri=http://localhost:8123"]
 
 EXPOSE     9116
