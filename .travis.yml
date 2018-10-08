@@ -7,7 +7,7 @@ go:
   - 1.9.x
   - master
 
-go_import_path: github.com/tkroman/clickhouse_exporter
+go_import_path: github.com/crobox/clickhouse_exporter
 
 services:
   - docker

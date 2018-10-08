@@ -2,9 +2,9 @@ FROM golang:1.11 AS BUILD
 
 MAINTAINER  Roman Tkalenko
 
-ADD . /go/src/github.com/tkroman/clickhouse_exporter
+ADD . /go/src/github.com/crobox/clickhouse_exporter
 
-WORKDIR /go/src/github.com/tkroman/clickhouse_exporter
+WORKDIR /go/src/github.com/crobox/clickhouse_exporter
 
 RUN make init && make
 
